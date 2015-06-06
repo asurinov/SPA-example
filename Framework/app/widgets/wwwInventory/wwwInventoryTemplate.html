@@ -1,0 +1,36 @@
+﻿<div class="www-widget">
+    <div class="www-widget-heading www-inventory-heading">
+        <img class="www-widget-icon" ng-src="images/inventory-icon.png" alt="" />
+        <span class="www-widget-title">Inventory</span>
+    </div>
+
+    <div class="www-widget-body" ng-style="selectedLocation != null && {'background-image': 'url(/images/' + selectedLocation.image + ')'}">
+        <div ng-if="!isLoaded && !hasError">
+            <i class="fa fa-2x fa-refresh fa-spin"></i>
+        </div>
+        <div ng-if="isLoaded" class="www-inventory-area">
+            <div class="www-widget-river-name">
+                {{selectedLocation.name}}
+            </div>
+            <div class="www-inventory-item">
+                <img src="/images/guide-icon.png" />
+                <span class="www-inventory-amount">{{selectedLocation.guides}}</span>
+                <span class="www-inventory-caption">GUIDES</span>
+            </div>
+            <div class="www-inventory-item">
+                <img src="/images/vest-icon.png" />
+                <span class="www-inventory-amount">{{selectedLocation.vests}}</span>
+                <span class="www-inventory-caption">VESTS</span>
+            </div>
+            <div class="www-inventory-item">
+                <img src="/images/raft-icon.png" />
+                <span class="www-inventory-amount">{{selectedLocation.rafts}}</span>
+                <span class="www-inventory-caption">RAFTS</span>
+            </div>
+        </div>
+        <div ng-if="hasError">
+            <h4>Error loading widget</h4>
+            <button class="btn btn-primary" ng-click="loadLocation()">Reload</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+﻿<div class="www-widget">
+    <div class="www-widget-heading www-temperature-heading">
+        <img class="www-widget-icon" ng-src="images/therm-icon.png" alt="" />
+        <span class="www-widget-title">Temp</span>
+    </div>
+
+    <div class="www-widget-body" ng-style="selectedLocation != null && {'background-image': 'url(/images/' + selectedLocation.image + ')'}">
+        <div ng-if="!isLoaded && !hasError">
+            <i class="fa fa-2x fa-refresh fa-spin"></i>
+        </div>
+        <div ng-if="isLoaded" class="www-widget-view www-temperature-view">
+            <div class="www-widget-river-name">
+                {{selectedLocation.name}}
+            </div>
+            <div class="www-temperature-degrees">
+                {{selectedLocation.temperature}}&deg;
+            </div>
+        </div>
+        <div ng-if="hasError">
+            <h4>Error loading widget</h4>
+            <button class="btn btn-primary" ng-click="loadLocation()">Reload</button>
+        </div>
+    </div>
+</div>

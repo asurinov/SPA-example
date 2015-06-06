@@ -1,0 +1,30 @@
+﻿.www-inventory-heading {
+    background-color: tomato;
+    color: black;
+}
+
+.www-inventory-area {
+    margin: 20px;
+    margin-top: 5px;
+    min-height: 60px;
+    border: 1px solid black;
+    overflow: hidden;
+    background-color: rgba(150, 150, 150, .3);
+}
+
+.www-inventory-item {
+    display: inline-block;
+    margin: 2px;
+}
+
+.www-inventory-item > img {
+    height: 24px;
+    width: 24px;
+}
+
+.www-inventory-amount {
+    font-size: 24px;
+}
+
+.www-inventory-caption {
+}
