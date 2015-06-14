@@ -1,0 +1,25 @@
+﻿<div class="www-widget">
+    <div class="www-widget-heading www-employee-heading">
+        <img class="www-widget-icon" ng-src="images/employee-icon.png" alt="" />
+        <span class="www-widget-title">Employee</span>
+    </div>
+
+    <div class="www-widget-body">
+        <div ng-if="!isLoaded && !hasError">
+            <i class="fa fa-2x fa-refresh fa-spin"></i>
+        </div>
+        <div ng-if="isLoaded" class="www-employee-area">
+            <div class="www-employee-name-area">
+                <h4>EMPLOYEE NAME</h4>
+                <p>{{selectedEmployee.name}}</p>
+                <h4>LOCATION</h4>
+                <p>{{selectedEmployee.location}}</p>
+            </div>
+            <div class="www-employee-picture-area" ng-style="selectedEmployee != null && {'background-image': 'url(/images/' + selectedEmployee.image + ')'}"></div>
+        </div>
+        <div ng-if="hasError">
+            <h4>Error loading widget</h4>
+            <button class="btn btn-primary" ng-click="loadLocation()">Reload</button>
+        </div>
+    </div>
+</div>

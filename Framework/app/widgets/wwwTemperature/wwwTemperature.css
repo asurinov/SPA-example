@@ -1,0 +1,14 @@
+﻿.www-temperature-heading {
+    background-color: red;
+    color: white;
+}
+
+.www-temperature-view {
+    background-color: rgba(255, 255, 255, .7);
+    border: 1px solid black;
+}
+
+.www-temperature-degrees {
+    font-size: 64px;
+    margin-top: -20px;
+}
