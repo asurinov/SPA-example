@@ -59,6 +59,9 @@
   <ItemGroup>
     <Content Include="app\appController.js" />
     <Content Include="app\appRouteConfig.js" />
+    <Content Include="app\designer\designer.css" />
+    <Content Include="app\designer\designerController.js" />
+    <Content Include="app\designer\designerModule.js" />
     <Content Include="app\dialogs\wwwSelectEmployeeController.js" />
     <Content Include="app\dialogs\wwwSelectEmployeeTemplate.html" />
     <Content Include="app\dialogs\wwwSelectLocationController.js" />
@@ -79,6 +82,7 @@
     <Content Include="app\widgets\wwwTemperature\wwwTemperatureTemplate.html" />
     <Content Include="Content\angular-gridster.min.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
+    <Content Include="designer.html" />
     <Content Include="dist\app.css" />
     <Content Include="dist\app.js" />
     <Content Include="dist\psFramework.css" />

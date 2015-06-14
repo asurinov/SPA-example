@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html ng-app="designer">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Object designer</title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/font-awesome.min.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans&subset=cyrillic,latin' rel='stylesheet' type='text/css'>
+    <link href="app/designer/designer.css" rel="stylesheet" />
+
+    <script src="Scripts/jquery-2.1.4.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-animate.min.js"></script>
+    <script src="Scripts/angular-route.min.js"></script>
+    <script src="Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
+    <script src="Scripts/ngStorage.min.js"></script>
+
+    <script src="app/designer/designerModule.js"></script>
+    <script src="app/designer/designerController.js"></script>
+
+</head>
+<body class="container-fluid" ng-controller="designerController">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-inline">
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="item.name"/>
+                    <select class="form-control" ng-model="item.type">
+                        <option ng-repeat="type in types" value="{{type.id}}">{{type.name}}</option>
+                    </select>
+                    <button class="btn btn-primary" ng-click="add()">Добавить</button>
+                </div>
+            </div>
+            <div ng-repeat="field in fields">
+                <div class="form-inline">
+                    <div class="property">
+                        <div class="form-group">
+                            <input type="text" class="form-control" ng-model="field.name" />
+                            <select class="form-control" ng-model="field.type">
+                                <option ng-repeat="type in types" value="{{type.id}}">{{type.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <ul class="nav nav-tabs nav-justified">
+                <li role="presentation" class="active"><a href="#">Home</a></li>
+                <li role="presentation"><a href="#">Profile</a></li>
+                <li role="presentation"><a href="#">Messages</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

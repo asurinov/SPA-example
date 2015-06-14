@@ -1,0 +1,12 @@
+﻿body {
+    padding: 15px;
+}
+
+.property {
+    margin: 5px;
+    border: 1px solid black;
+}
+
+.property:hover {
+
+}
