@@ -293,6 +293,107 @@ angular.module('app').controller('wwwSelectEmployeeController', [
         };
     }
 ]);
+angular.module("designer", ['dnd']);
+angular.module("designer").controller("designerController", ["$scope", function ($scope) {
+    $scope.fields = [];
+    $scope.selectedRegistry = null;
+
+    $scope.item = {
+        name: "",
+        type: null
+    }
+
+    $scope.types = [
+        {
+            id: 1,
+            name: "One"
+        },
+        {
+            id: 2,
+            name: "Two"
+        },
+        {
+            id: 3,
+            name: "Three"
+        }
+    ];
+
+    $scope.registry = [
+        {
+            id: 1,
+            name: "Item1",
+            type: 'registry-folder',
+            children: []
+        },
+        {
+            id: 2,
+            name: "Item2",
+            parameters: [
+                {
+                    name: 'Parameter21',
+                    type: 2
+                },
+                {
+                    name: 'Parameter22',
+                    type: 3
+                }
+            ],
+            type: 'registry-item'
+        },
+        {
+            id: 3,
+            name: "Item3",
+            parameters: [
+                {
+                    name: 'Parameter31',
+                    type: 1
+                },
+                {
+                    name: 'Parameter32',
+                    type: 2
+                }
+            ],
+            type: 'registry-item'
+        }
+    ];
+
+
+    $scope.add = function () {
+        $scope.selectedRegistry.parameters.push($scope.item);
+        clearForm();
+    };
+
+    $scope.removeParam = function(index) {
+        $scope.selectedRegistry.parameters.splice(index, 1);
+    }
+
+    function clearForm() {
+        $scope.item = {
+            name: "",
+            type: null
+        }
+    }
+
+    $scope.canAdd = function() {
+        return $scope.item && $scope.item.name !== "" && $scope.item.type != null;
+    };
+
+    $scope.selectRegistry = function(reg) {
+        if (reg.type === 'registry-folder') {
+
+        } else {
+            $scope.selectedRegistry = reg;
+        }
+    }
+
+    $scope.canDrop = function(type) {
+        return type === 'registry-folder';
+    }
+
+    $scope.dropCallback = function(dragmodel) {
+        var x = 1;
+    }
+}]);
 angular.module("app").run(["$templateCache", function($templateCache) {$templateCache.put("app/dialogs/wwwSelectEmployeeTemplate.html","<div class=\"modal-header\">\r\n    <h3 class=\"modal-title\">Select Employee</h3>\r\n</div>\r\n<div class=\"modal-body\">\r\n    <h3>Name</h3>\r\n    <select ng-show=\"isLoaded\"\r\n            ng-model=\"selectedEmployee\" \r\n            ng-options=\"employee.name for employee in employees\"></select>\r\n</div>\r\n<div class=\"modal-footer\">\r\n    <button class=\"btn btn-primary\" ng-click=\"saveSettings()\" type=\"button\">Save</button>\r\n    <button class=\"btn btn-primary\" ng-click=\"$dismiss()\" type=\"button\">Cancel</button>\r\n</div>");
 $templateCache.put("app/dialogs/wwwSelectLocationTemplate.html","<div class=\"modal-header\">\r\n    <h3 class=\"modal-title\">Select Location</h3>\r\n</div>\r\n<div class=\"modal-body\">\r\n    <h3>Name</h3>\r\n    <select ng-show=\"isLoaded\"\r\n            ng-model=\"selectedLocation\"\r\n            ng-options=\"location.name for location in locations\"></select>\r\n</div>\r\n<div class=\"modal-footer\">\r\n    <button class=\"btn btn-primary\" ng-click=\"saveSettings()\" type=\"button\">Save</button>\r\n    <button class=\"btn btn-primary\" ng-click=\"$dismiss()\" type=\"button\">Cancel</button>\r\n</div>\r\n");
 $templateCache.put("app/widgets/wwwEmployee/wwwEmployeeTemplate.html","<div class=\"www-widget\">\r\n    <div class=\"www-widget-heading www-employee-heading\">\r\n        <img class=\"www-widget-icon\" ng-src=\"images/employee-icon.png\" alt=\"\" />\r\n        <span class=\"www-widget-title\">Employee</span>\r\n    </div>\r\n\r\n    <div class=\"www-widget-body\">\r\n        <div ng-if=\"!isLoaded && !hasError\">\r\n            <i class=\"fa fa-2x fa-refresh fa-spin\"></i>\r\n        </div>\r\n        <div ng-if=\"isLoaded\" class=\"www-employee-area\">\r\n            <div class=\"www-employee-name-area\">\r\n                <h4>EMPLOYEE NAME</h4>\r\n                <p>{{selectedEmployee.name}}</p>\r\n                <h4>LOCATION</h4>\r\n                <p>{{selectedEmployee.location}}</p>\r\n            </div>\r\n            <div class=\"www-employee-picture-area\" ng-style=\"selectedEmployee != null && {\'background-image\': \'url(/images/\' + selectedEmployee.image + \')\'}\"></div>\r\n        </div>\r\n        <div ng-if=\"hasError\">\r\n            <h4>Error loading widget</h4>\r\n            <button class=\"btn btn-primary\" ng-click=\"loadLocation()\">Reload</button>\r\n        </div>\r\n    </div>\r\n</div>\r\n");

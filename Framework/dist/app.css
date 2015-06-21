@@ -10,6 +10,40 @@ body {
 .sign-in-form {
     padding: 80px;
 }
+body {
+    padding: 15px;
+}
+
+.well:hover {
+    border: 1px solid #808080;
+}
+
+.well .counter {
+    border-radius: 10px;
+    border: 1px solid #808080;
+    padding: 0 2px 0 2px;
+    background-color: #808080;
+    color: white;
+}
+
+.well.selected {
+    background-color: #1e90ff;
+}
+
+.well > span {
+    margin-left: 5px;
+}
+
+.parameter {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.parameter i:first-child {
+    margin-top: 2px;
+}
 .www-widget {
     height: 100%;
     width: 100%;
@@ -105,6 +139,20 @@ body {
     width: 50%;
     background-size: cover;
 }
+.www-temperature-heading {
+    background-color: red;
+    color: white;
+}
+
+.www-temperature-view {
+    background-color: rgba(255, 255, 255, .7);
+    border: 1px solid black;
+}
+
+.www-temperature-degrees {
+    font-size: 64px;
+    margin-top: -20px;
+}
 .www-inventory-heading {
     background-color: tomato;
     color: black;
@@ -134,19 +182,4 @@ body {
 }
 
 .www-inventory-caption {
-}
-
-.www-temperature-heading {
-    background-color: red;
-    color: white;
-}
-
-.www-temperature-view {
-    background-color: rgba(255, 255, 255, .7);
-    border: 1px solid black;
-}
-
-.www-temperature-degrees {
-    font-size: 64px;
-    margin-top: -20px;
 }
