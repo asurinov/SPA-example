@@ -1,1 +1,1 @@
-﻿angular.module("designer", []);
+﻿angular.module("designer", ['dnd']);

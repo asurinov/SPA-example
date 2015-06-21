@@ -1,0 +1,25 @@
+{
+  "name": "framework",
+  "version": "0.0.1",
+  "homepage": "https://github.com/MacheteDSMS/SPA-example",
+  "authors": [
+    "MacheteDSMS <asurinov8@gmail.com>"
+  ],
+  "description": "Simple SPA example",
+  "main": "index.html",
+  "keywords": [
+    "spa",
+    "angularjs"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-dnd-module": "*"
+  }
+}
