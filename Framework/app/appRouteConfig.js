@@ -20,6 +20,19 @@ angular.module('app').config([
                 config: {
                     template: '<wwa-guides></wwa-guides>'
                 }
+            },
+            {
+                url: '/designer',
+                config: {
+                    templateUrl: '/app/designer/view.html',
+                    controller: 'designerController'
+                }
+            },
+            {
+                url: '/accordion',
+                config: {
+                    template: '<wwa-accordion></wwa-accordion>'
+                }
             }
         ];
 

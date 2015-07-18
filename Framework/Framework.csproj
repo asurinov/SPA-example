@@ -57,32 +57,35 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\accordion\accordionController.js" />
+    <Content Include="app\accordion\view.html" />
+    <Content Include="app\accordion\wwaAccordion.js" />
     <Content Include="app\appController.js" />
     <Content Include="app\appRouteConfig.js" />
-    <Content Include="app\designer\designer.css" />
+    <None Include="app\designer\designer.less" />
     <Content Include="app\designer\designerController.js" />
-    <Content Include="app\designer\designerModule.js" />
     <Content Include="app\dialogs\wwwSelectEmployeeController.js" />
     <Content Include="app\dialogs\wwwSelectEmployeeTemplate.html" />
     <Content Include="app\dialogs\wwwSelectLocationController.js" />
     <Content Include="app\dialogs\wwwSelectLocationTemplate.html" />
+    <Content Include="app\designer\designerDirective.js" />
     <Content Include="app\directives\wwwDashboardDirective.js" />
     <Content Include="app\directives\wwwGuidesDirective.js" />
     <Content Include="app\directives\wwwLocationsDirective.js" />
     <Content Include="app\services\dataService.js" />
-    <Content Include="app\widgets\widget.css" />
-    <Content Include="app\widgets\wwwEmployee\wwwEmployee.css" />
+    <None Include="app\widgets\widget.less" />
+    <None Include="app\widgets\wwwEmployee\wwwEmployee.less" />
     <Content Include="app\widgets\wwwEmployee\wwwEmployeeDirective.js" />
     <Content Include="app\widgets\wwwEmployee\wwwEmployeeTemplate.html" />
-    <Content Include="app\widgets\wwwInventory\wwwInventory.css" />
+    <None Include="app\widgets\wwwInventory\wwwInventory.less" />
     <Content Include="app\widgets\wwwInventory\wwwInventoryDirective.js" />
     <Content Include="app\widgets\wwwInventory\wwwInventoryTemplate.html" />
-    <Content Include="app\widgets\wwwTemperature\wwwTemperature.css" />
+    <None Include="app\widgets\wwwTemperature\wwwTemperature.less" />
     <Content Include="app\widgets\wwwTemperature\wwwTemperatureDirective.js" />
     <Content Include="app\widgets\wwwTemperature\wwwTemperatureTemplate.html" />
     <Content Include="Content\angular-gridster.min.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
-    <Content Include="designer.html" />
+    <Content Include="app\designer\view.html" />
     <Content Include="dist\app.css" />
     <Content Include="dist\app.js" />
     <Content Include="dist\psFramework.css" />
@@ -126,7 +129,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\app.css" />
+    <None Include="app\app.less" />
     <Content Include="app\appConfig.js" />
     <Content Include="app\appModule.js" />
     <Content Include="Content\bootstrap-theme.css" />

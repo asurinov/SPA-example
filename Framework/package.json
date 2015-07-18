@@ -13,6 +13,7 @@
     "gulp-angular-filesort": "^1.1.1",
     "gulp-angular-templatecache": "^1.6.0",
     "gulp-concat": "^2.5.2",
+    "gulp-less": "^3.0.3",
     "gulp-strip-line": "0.0.1"
   }
 }

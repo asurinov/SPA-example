@@ -1,185 +1,165 @@
 body {
-    background-color: white;
-    font-family: "Open Sans", sans-serif;
+  background-color: white;
+  font-family: "Open Sans", sans-serif;
 }
-
 .container-fluid {
-    padding: 0;
+  padding: 0;
 }
-
 .sign-in-form {
-    padding: 80px;
+  padding: 80px;
 }
+
 body {
-    padding: 15px;
+  padding: 15px;
 }
-
-.well:hover {
-    border: 1px solid #808080;
-}
-
-.well .counter {
-    border-radius: 10px;
-    border: 1px solid #808080;
-    padding: 0 2px 0 2px;
-    background-color: #808080;
-    color: white;
-}
-
-.well.selected {
-    background-color: #1e90ff;
-}
-
 .well > span {
-    margin-left: 5px;
+  margin-left: 5px;
 }
-
+.well:hover {
+  border: 1px solid #808080;
+}
+.well.selected {
+  background-color: #1e90ff;
+}
+.well .counter {
+  border-radius: 10px;
+  border: 1px solid #808080;
+  padding: 0 2px 0 2px;
+  background-color: #808080;
+  color: white;
+}
 .parameter {
-    padding: 10px;
-    margin: 5px;
-    border: 1px solid black;
-    border-radius: 10px;
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid black;
+  border-radius: 10px;
 }
-
 .parameter i:first-child {
-    margin-top: 2px;
+  margin-top: 2px;
 }
+.datasource {
+  height: 50px;
+  border: 1px dashed gray;
+  background-color: #ddd;
+  opacity: 0.5;
+}
+
 .www-widget {
-    height: 100%;
-    width: 100%;
-    min-height: 180px;
-    font-size: 16px;
-    color: black;
-    overflow: hidden;
+  height: 100%;
+  width: 100%;
+  min-height: 180px;
+  font-size: 16px;
+  color: black;
+  overflow: hidden;
 }
-
 .www-widget-heading {
-    height: 32px;
-    padding-top: 2px;
-    font-size: 15px;
-    line-height: 32px;
+  height: 32px;
+  padding-top: 2px;
+  font-size: 15px;
+  line-height: 32px;
 }
-
 .www-widget-icon {
-    height: 24px;
-    width: 24px;
-    margin-top: -2px;
+  height: 24px;
+  width: 24px;
+  margin-top: -2px;
 }
-
 .www-widget-body {
-    position: relative;
-    text-align: center;
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    min-height: 180px;
-    padding: 0;
+  position: relative;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  min-height: 180px;
+  padding: 0;
 }
-
 .www-widget-view {
-    position: absolute;
-    right: 5px;
-    bottom: 38px;
-    padding: 10px;
+  position: absolute;
+  right: 5px;
+  bottom: 38px;
+  padding: 10px;
 }
-
 .www-widget-body .fa-spin {
-    position: absolute;
-    left: 10px;
-    top: 10px;
+  position: absolute;
+  left: 10px;
+  top: 10px;
 }
-
 .www-widget-river-name {
-    height: 30px;
-    font-size: 14px;
-    font-weight: bold;
-    margin-top: 8px;
+  height: 30px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 8px;
 }
-
-
 
 .www-employee-heading {
-    background-color: blue;
-    color: white;
+  background-color: blue;
+  color: white;
 }
-
 .www-employee-area {
-    height: 100%;
-    width: 100%;
-    margin: 0;
+  height: 100%;
+  width: 100%;
+  margin: 0;
 }
-
 .www-employee-name-area {
-    display: block;
-    position: relative;
-    left: 0;
-    background-color: black;
-    color: white;
-    height: 100%;
-    width: 50%;
-    text-align: left;
-    padding-left: 5px;
-    float: left;
+  display: block;
+  position: relative;
+  left: 0;
+  background-color: black;
+  color: white;
+  height: 100%;
+  width: 50%;
+  text-align: left;
+  padding-left: 5px;
+  float: left;
 }
-
-.www-employee-name-area > p{
-    font-size: 20px;
+.www-employee-name-area > p {
+  font-size: 20px;
 }
-
-.www-employee-name-area > h4{
-    font-size: 10px;
+.www-employee-name-area > h4 {
+  font-size: 10px;
 }
-
 .www-employee-picture-area {
-    display: block;
-    float: left;
-    height: 100%;
-    width: 50%;
-    background-size: cover;
-}
-.www-temperature-heading {
-    background-color: red;
-    color: white;
+  display: block;
+  float: left;
+  height: 100%;
+  width: 50%;
+  background-size: cover;
 }
 
-.www-temperature-view {
-    background-color: rgba(255, 255, 255, .7);
-    border: 1px solid black;
-}
-
-.www-temperature-degrees {
-    font-size: 64px;
-    margin-top: -20px;
-}
 .www-inventory-heading {
-    background-color: tomato;
-    color: black;
+  background-color: tomato;
+  color: black;
 }
-
 .www-inventory-area {
-    margin: 20px;
-    margin-top: 5px;
-    min-height: 60px;
-    border: 1px solid black;
-    overflow: hidden;
-    background-color: rgba(150, 150, 150, .3);
+  margin: 20px;
+  margin-top: 5px;
+  min-height: 60px;
+  border: 1px solid black;
+  overflow: hidden;
+  background-color: rgba(150, 150, 150, 0.3);
 }
-
 .www-inventory-item {
-    display: inline-block;
-    margin: 2px;
+  display: inline-block;
+  margin: 2px;
 }
-
 .www-inventory-item > img {
-    height: 24px;
-    width: 24px;
+  height: 24px;
+  width: 24px;
 }
-
 .www-inventory-amount {
-    font-size: 24px;
+  font-size: 24px;
 }
 
-.www-inventory-caption {
+.www-temperature-heading {
+  background-color: red;
+  color: white;
+}
+.www-temperature-view {
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px solid black;
+}
+.www-temperature-degrees {
+  font-size: 64px;
+  margin-top: -20px;
 }

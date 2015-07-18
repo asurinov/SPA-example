@@ -3,6 +3,7 @@ var concat = require('gulp-concat');
 var angularFilesort = require('gulp-angular-filesort');
 var stripLine = require('gulp-strip-line');
 var templateCache = require('gulp-angular-templatecache');
+var less = require('gulp-less');
 
 gulp.task('buildMenuTemplateCache', function() {
     return gulp.src(['./ext-modules/psMenu/**/*.html'])
@@ -31,15 +32,6 @@ gulp.task('buildFrameworkTemplateCache', function () {
         .pipe(gulp.dest('./ext-modules/psFramework/'));
 });
 
-gulp.task('buildAppTemplateCache', function () {
-    return gulp.src(['./app/**/*.html'])
-        .pipe(templateCache({
-            root: 'app/',
-            module: 'app'
-        }))
-        .pipe(gulp.dest('./app/'));
-});
-
 gulp.task('buildModulesJavaScript', function() {
     return gulp.src(['./ext-modules/**/*.js'])
         .pipe(angularFilesort())
@@ -54,6 +46,15 @@ gulp.task('buildModulesCSS', function () {
         .pipe(gulp.dest('./dist/'));
 });
 
+gulp.task('buildAppTemplateCache', function () {
+    return gulp.src(['./app/**/*.html'])
+        .pipe(templateCache({
+            root: 'app/',
+            module: 'app'
+        }))
+        .pipe(gulp.dest('./app/'));
+});
+
 gulp.task('buildAppJavaScript', function () {
     return gulp.src(['./app/**/*.js'])
         .pipe(angularFilesort())
@@ -62,8 +63,18 @@ gulp.task('buildAppJavaScript', function () {
         .pipe(gulp.dest('./dist/'));
 });
 
-gulp.task('buildAppCSS', function () {
-    return gulp.src(['./app/**/*.css'])
+gulp.task('LessCompileApp', function () {
+    return gulp.src(['./app/**/*.less'])
+        .pipe(less())
         .pipe(concat('app.css'))
         .pipe(gulp.dest('./dist/'));
 });
+
+
+gulp.task('buildAppResources', ['LessCompileApp', 'buildAppJavaScript', 'buildAppTemplateCache']);
+
+gulp.task('watch', function() {
+    gulp.watch('./app/**/*', ['buildAppResources']);
+});
+
+gulp.task('default', ['buildAppResources', 'watch']);

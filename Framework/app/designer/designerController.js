@@ -1,4 +1,4 @@
-﻿angular.module("designer").controller("designerController", ["$scope", function ($scope) {
+﻿angular.module("app").controller("designerController", ["$scope", function ($scope) {
     $scope.fields = [];
     $scope.selectedRegistry = null;
 
@@ -6,6 +6,8 @@
         name: "",
         type: null
     }
+
+    $scope.datasources = [];
 
     $scope.types = [
         {
@@ -23,12 +25,6 @@
     ];
 
     $scope.registry = [
-        {
-            id: 1,
-            name: "Item1",
-            type: 'registry-folder',
-            children: []
-        },
         {
             id: 2,
             name: "Item2",
@@ -67,7 +63,7 @@
         clearForm();
     };
 
-    $scope.removeParam = function(index) {
+    $scope.removeParam = function (index) {
         $scope.selectedRegistry.parameters.splice(index, 1);
     }
 
@@ -78,11 +74,11 @@
         }
     }
 
-    $scope.canAdd = function() {
+    $scope.canAdd = function () {
         return $scope.item && $scope.item.name !== "" && $scope.item.type != null;
     };
 
-    $scope.selectRegistry = function(reg) {
+    $scope.selectRegistry = function (reg) {
         if (reg.type === 'registry-folder') {
 
         } else {
@@ -90,11 +86,29 @@
         }
     }
 
-    $scope.canDrop = function(type) {
+    $scope.canDrop = function (type) {
         return type === 'registry-folder';
     }
 
-    $scope.dropCallback = function(dragmodel) {
+    $scope.dropCallback = function (dragmodel) {
+        $scope.registry = _.filter($scope.registry, function(item) {
+            return item.id !== dragmodel.id;
+        });
+        $scope.dropmodel.children.push(dragmodel);
+    }
+
+    $scope.onAddDataSource = function (dragmodel) {
+        $scope.datasources.push(dragmodel);
+    }
+
+    $scope.dropmodel = {
+        id: 1,
+        name: "Item1",
+        type: 'registry-folder',
+        children: []
+    };
+
+    $scope.onDragOver = function(dropModel, dragModel) {
         var x = 1;
     }
 }]);
