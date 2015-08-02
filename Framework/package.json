@@ -12,11 +12,13 @@
     "gulp": "^3.9.0",
     "gulp-angular-filesort": "^1.1.1",
     "gulp-angular-templatecache": "^1.6.0",
+    "gulp-clean": "^0.3.1",
     "gulp-concat": "^2.5.2",
     "gulp-if": "^1.2.5",
     "gulp-if-else": "^1.0.3",
     "gulp-less": "^3.0.3",
-    "gulp-strip-line": "0.0.1"
+    "gulp-strip-line": "0.0.1",
+    "run-sequence": "^1.1.2"
   },
   "dependencies": {
     "gulp-inject": "^1.5.0"

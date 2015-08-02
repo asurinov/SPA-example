@@ -3,6 +3,8 @@ var concat = require('gulp-concat');
 var ifElse = require('gulp-if-else');
 var gulpIf = require('gulp-if');
 var inject = require('gulp-inject');
+var clean = require('gulp-clean');
+var runSequence = require('run-sequence');
 var angularFilesort = require('gulp-angular-filesort');
 var stripLine = require('gulp-strip-line');
 var templateCache = require('gulp-angular-templatecache');
@@ -80,15 +82,22 @@ gulp.task('LessCompileApp', function () {
         .pipe(gulp.dest('./dist/'));
 });
 
-gulp.task('buildAppResources', ['LessCompileApp', 'buildAppJavaScript', 'buildAppTemplateCache']);
+gulp.task('buildAppResources', function() {
+    runSequence('clean', ['LessCompileApp', 'buildAppJavaScript', 'buildAppTemplateCache']);
+});
+
 
 gulp.task('watch', function() {
     gulp.watch(['./app/**/*', '!app/**/templates.js'], ['buildAppResources']);
+});
+
+gulp.task('clean', function() {
+    return gulp.src('./dist/**/*', { read: false }).pipe(clean());
 });
 
 gulp.task('default', ['buildAppResources', 'watch']);
 
 gulp.task('publish', function () {
     isDebug = false;
-
+    runSequence('clean', ['LessCompileApp', 'buildAppJavaScript', 'buildAppTemplateCache']);
 });
