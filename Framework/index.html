@@ -1,8 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html ng-app="app">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
+    <meta charset="utf-8">
+    <base href="/">
     <title>Whitewater Adventures</title>
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="Content/font-awesome.min.css" rel="stylesheet" />
@@ -25,8 +26,28 @@
     <script src="bower_components/underscore/underscore-min.js"></script>
 
     <script src="dist/psFramework.js"></script>
-
-    <script src="dist/app.js"></script>
+    
+    <!-- inject:js -->
+    <script src="/dist/appModule.js"></script>
+    <script src="/dist/widgets/wwwTemperature/wwwTemperatureDirective.js"></script>
+    <script src="/dist/widgets/wwwInventory/wwwInventoryDirective.js"></script>
+    <script src="/dist/widgets/wwwEmployee/wwwEmployeeDirective.js"></script>
+    <script src="/dist/services/dataService.js"></script>
+    <script src="/dist/directives/wwwLocationsDirective.js"></script>
+    <script src="/dist/directives/wwwGuidesDirective.js"></script>
+    <script src="/dist/directives/wwwDashboardDirective.js"></script>
+    <script src="/dist/dialogs/wwwSelectLocationController.js"></script>
+    <script src="/dist/dialogs/wwwSelectEmployeeController.js"></script>
+    <script src="/dist/designer/designerDirective.js"></script>
+    <script src="/dist/designer/designerController.js"></script>
+    <script src="/dist/creeptrainer/creepTrainerDirective.js"></script>
+    <script src="/dist/accordion/wwaAccordion.js"></script>
+    <script src="/dist/accordion/accordionController.js"></script>
+    <script src="/dist/templates.js"></script>
+    <script src="/dist/appRouteConfig.js"></script>
+    <script src="/dist/appController.js"></script>
+    <script src="/dist/appConfig.js"></script>
+    <!-- endinject -->
 
 </head>
 <body class="container-fluid" ng-controller="appController">
@@ -52,7 +73,7 @@
                           icon-file="images/kayak-icon-flat.png">
                 <ps-menu>
                     <ps-menu-item label="Dashboard" icon="fa-dashboard" route="dashboard"></ps-menu-item>
-                    <ps-menu-item label="Locations" icon="fa-location-arrow" route="locations"></ps-menu-item>
+                    <ps-menu-item label="CreepTrainer" icon="fa-location-arrow" route="creeptrainer"></ps-menu-item>
                     <ps-menu-item label="Raft Guides" icon="fa-user" route="guides"></ps-menu-item>
                     <ps-menu-group label="Equipment" icon="fa-gears">
                         <ps-menu-item label="Rafts" icon="fa-unlink" route="rafts"></ps-menu-item>

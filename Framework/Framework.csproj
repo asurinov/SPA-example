@@ -62,7 +62,10 @@
     <Content Include="app\accordion\wwaAccordion.js" />
     <Content Include="app\appController.js" />
     <Content Include="app\appRouteConfig.js" />
+    <Content Include="app\creeptrainer\creepTrainer.less" />
     <None Include="app\designer\designer.less" />
+    <Content Include="app\creeptrainer\creepTrainerDirective.js" />
+    <Content Include="app\creeptrainer\view.html" />
     <Content Include="app\designer\designerController.js" />
     <Content Include="app\dialogs\wwwSelectEmployeeController.js" />
     <Content Include="app\dialogs\wwwSelectEmployeeTemplate.html" />

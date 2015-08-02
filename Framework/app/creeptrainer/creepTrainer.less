@@ -1,0 +1,22 @@
+﻿@radius: 40px;
+.unit {
+    display: inline-block;
+    width: 60px;
+    text-align: center;
+    margin-left: 10px;
+
+    progress {
+        width: 60px;
+    }
+
+    .target {
+        -webkit-user-select: none;
+        cursor: pointer;
+        margin-top: 5px;
+        display: inline-block;
+        width: @radius;
+        height: @radius;
+        background-color: green;
+        border-radius: @radius;
+    }    
+}

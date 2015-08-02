@@ -29,6 +29,12 @@ angular.module('app').config([
                 }
             },
             {
+                url: '/creeptrainer',
+                config: {
+                    template: '<creep-trainer></creep-trainer>'
+                }
+            },
+            {
                 url: '/accordion',
                 config: {
                     template: '<wwa-accordion></wwa-accordion>'
@@ -39,7 +45,7 @@ angular.module('app').config([
         routes.forEach(function(route) {
             $routeProvider.when(route.url, route.config);
         });
-
+        
         $routeProvider.otherwise({ redirectTo: 'dashboard' });
     }
 ]);

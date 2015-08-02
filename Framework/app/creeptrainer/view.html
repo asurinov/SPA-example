@@ -1,0 +1,11 @@
+﻿<div class="container-fluid">
+    <div>Крипцов добито: <span id="creepStat">0</span></div>
+    <div>Крипцов потеряно: <span id="creepLost">0</span></div>
+    <div>Кликов: <span id="clickStat">0</span></div>
+    <div id="container">
+        <div class="unit" ng-repeat="unit in units">
+            <progressbar class="progress-striped active" value="unit.$hp" type="{{getType(unit.$hp)}}"></progressbar>
+            <div class="target" ng-click="onHit(unit, $index)"></div>
+        </div>
+    </div>
+</div>

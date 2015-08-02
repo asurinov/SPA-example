@@ -1,9 +1,14 @@
 ﻿var gulp = require('gulp');
 var concat = require('gulp-concat');
+var ifElse = require('gulp-if-else');
+var gulpIf = require('gulp-if');
+var inject = require('gulp-inject');
 var angularFilesort = require('gulp-angular-filesort');
 var stripLine = require('gulp-strip-line');
 var templateCache = require('gulp-angular-templatecache');
 var less = require('gulp-less');
+
+var isDebug = true;
 
 gulp.task('buildMenuTemplateCache', function() {
     return gulp.src(['./ext-modules/psMenu/**/*.html'])
@@ -56,11 +61,16 @@ gulp.task('buildAppTemplateCache', function () {
 });
 
 gulp.task('buildAppJavaScript', function () {
-    return gulp.src(['./app/**/*.js'])
+    var target = gulp.src('./index.html');
+
+    var appStream = gulp.src(['./app/**/*.js'])
         .pipe(angularFilesort())
-        .pipe(concat('app.js'))
+        .pipe(gulpIf(!isDebug, concat('app.js')))
         .pipe(stripLine(['use strict']))
         .pipe(gulp.dest('./dist/'));
+
+    return target.pipe(inject(appStream))
+      .pipe(gulp.dest('./'));
 });
 
 gulp.task('LessCompileApp', function () {
@@ -70,11 +80,15 @@ gulp.task('LessCompileApp', function () {
         .pipe(gulp.dest('./dist/'));
 });
 
-
 gulp.task('buildAppResources', ['LessCompileApp', 'buildAppJavaScript', 'buildAppTemplateCache']);
 
 gulp.task('watch', function() {
-    gulp.watch('./app/**/*', ['buildAppResources']);
+    gulp.watch(['./app/**/*', '!app/**/templates.js'], ['buildAppResources']);
 });
 
 gulp.task('default', ['buildAppResources', 'watch']);
+
+gulp.task('publish', function () {
+    isDebug = false;
+
+});
