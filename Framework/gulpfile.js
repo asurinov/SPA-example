@@ -3,7 +3,7 @@ var concat = require('gulp-concat');
 var ifElse = require('gulp-if-else');
 var gulpIf = require('gulp-if');
 var inject = require('gulp-inject');
-var clean = require('gulp-clean');
+var del = require('del');
 var runSequence = require('run-sequence');
 var angularFilesort = require('gulp-angular-filesort');
 var stripLine = require('gulp-strip-line');
@@ -63,16 +63,11 @@ gulp.task('buildAppTemplateCache', function () {
 });
 
 gulp.task('buildAppJavaScript', function () {
-    var target = gulp.src('./index.html');
-
-    var appStream = gulp.src(['./app/**/*.js'])
+    return gulp.src(['./app/**/*.js'])
         .pipe(angularFilesort())
         .pipe(gulpIf(!isDebug, concat('app.js')))
         .pipe(stripLine(['use strict']))
         .pipe(gulp.dest('./dist/'));
-
-    return target.pipe(inject(appStream))
-      .pipe(gulp.dest('./'));
 });
 
 gulp.task('LessCompileApp', function () {
@@ -82,22 +77,37 @@ gulp.task('LessCompileApp', function () {
         .pipe(gulp.dest('./dist/'));
 });
 
-gulp.task('buildAppResources', function() {
-    runSequence('clean', ['LessCompileApp', 'buildAppJavaScript', 'buildAppTemplateCache']);
-});
-
-
 gulp.task('watch', function() {
     gulp.watch(['./app/**/*', '!app/**/templates.js'], ['buildAppResources']);
 });
 
-gulp.task('clean', function() {
-    return gulp.src('./dist/**/*', { read: false }).pipe(clean());
+gulp.task('clean', function(cb) {
+    return del(['./dist/**/*'], { force: true }, cb);
 });
 
-gulp.task('default', ['buildAppResources', 'watch']);
+gulp.task('inject', function () {
+    return gulp.src('./index.html')
+        .pipe(inject(gulp.src('./dist/psFramework.js', { read: false }), { name: 'framework' }))
+        .pipe(inject(gulp.src(['./dist/**/*.js', '!./dist/psFramework.js'], { read: false })))
+        .pipe(inject(gulp.src('./dist/**/*.css', { read: false })))
+        .pipe(gulp.dest('./'));
+});
+
+gulp.task('default', ['build', 'watch']);
+
+gulp.task('build', function () {
+    runSequence(
+        'clean',
+        ['buildMenuTemplateCache', 'buildDashboardTemplateCache', 'buildFrameworkTemplateCache', 'buildModulesCSS', 'buildAppTemplateCache', 'LessCompileApp'],
+        ['buildModulesJavaScript', 'buildAppJavaScript'],
+        'inject');
+});
 
 gulp.task('publish', function () {
     isDebug = false;
-    runSequence('clean', ['LessCompileApp', 'buildAppJavaScript', 'buildAppTemplateCache']);
+    runSequence(
+        'clean',
+        ['buildMenuTemplateCache', 'buildDashboardTemplateCache', 'buildFrameworkTemplateCache', 'buildModulesCSS', 'buildAppTemplateCache', 'LessCompileApp'],
+        ['buildModulesJavaScript', 'buildAppJavaScript'],
+        'inject');
 });
