@@ -64,9 +64,9 @@ gulp.task('buildAppTemplateCache', function () {
 
 gulp.task('buildAppJavaScript', function () {
     return gulp.src(['./app/**/*.js'])
+        .pipe(stripLine(['use strict']))
         .pipe(angularFilesort())
         .pipe(gulpIf(!isDebug, concat('app.js')))
-        .pipe(stripLine(['use strict']))
         .pipe(gulp.dest('./dist/'));
 });
 
@@ -78,7 +78,7 @@ gulp.task('LessCompileApp', function () {
 });
 
 gulp.task('watch', function() {
-    gulp.watch(['./app/**/*', '!app/**/templates.js'], ['buildAppResources']);
+    gulp.watch(['./index.html', './app/**/*', '!app/**/templates.js'], ['build']);
 });
 
 gulp.task('clean', function(cb) {
@@ -88,7 +88,7 @@ gulp.task('clean', function(cb) {
 gulp.task('inject', function () {
     return gulp.src('./index.html')
         .pipe(inject(gulp.src('./dist/psFramework.js', { read: false }), { name: 'framework' }))
-        .pipe(inject(gulp.src(['./dist/**/*.js', '!./dist/psFramework.js'], { read: false })))
+        .pipe(inject(gulp.src(['./dist/**/*.js', '!./dist/psFramework.js']).pipe(angularFilesort())))
         .pipe(inject(gulp.src('./dist/**/*.css', { read: false })))
         .pipe(gulp.dest('./'));
 });
